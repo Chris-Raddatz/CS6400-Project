@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Category Report</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style>
+      th, td {
+        text-align:left;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./includes/header.ejs'); -%>
+    <main>
+      <head>
+        <span style="font-size: 26px">Category Report</span>
+      </head>
+      <br>
+    </br>
+      <table style="width: 100%;">
+        <tr style="text-decoration: underline;">
+          <th class = "text-center">Category</th>
+          <th class = "text-center">Total Items</th>
+          <th class = "text-center">Min Price</th>
+          <th class = "text-center">Max Price</th>
+          <th class = "text-center">Average Price</th>
+        </tr>
+        <% for(let i =0;i <= data.length -1; i++){ %>
+        <tr>
+          <td> <%= data[i].Category %> </td>
+          <td> <%= data[i].Total_Items %> </td>
+          <td> <%= data[i].Min_Price %> </td>
+          <td> <%= data[i].Max_Price %> </td>
+          <td> <%= data[i].Average_Price %> </td>
+        </tr>
+        <% } %>
+      </table>
+      </section>
+      </main>
+      <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>
+  

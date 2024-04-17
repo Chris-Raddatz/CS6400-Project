@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Item for Auction</title>
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <%- include('./includes/header.ejs'); -%>
+
+    <main>
+      <%- include('./includes/messages.ejs'); -%>
+
+      <form action="/item/list-item" method="post">
+        <section>
+          <label for="item-name">Item Name</label>
+          <input
+            id="item-name"
+            name="itemName"
+            type="text"
+            required
+            autofocus
+          />
+        </section>
+        <section>
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            required
+          ></textarea>
+        </section>
+        <section>
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <% categories.forEach(function(categoryObj) { %>
+                <option value="<%= categoryObj.categoryname %>"><%= categoryObj.categoryname %></option>
+            <% }); %>
+          </select>
+        </section>
+        <section>
+          <label for="condition">Condition</label>
+          <select id="condition" name="condition">
+            <% conditions.forEach(function(conditionObj) { %>
+                <option value="<%= conditionObj.condition.label %>"><%= conditionObj.condition.label %></option>
+            <% }); %>
+          </select>
+        </section>
+        <section>
+          <label for="start-bidding-amount">Start auction bidding at $</label>
+          <input
+            id="start-bidding-amount"
+            name="startBiddingAmount"
+            type="number"
+            min="0"
+            required
+          />
+        </section>
+        <section>
+          <label for="minimum-sale-price">Minimum sale price $</label>
+          <input
+            id="minimum-sale-price"
+            name="minimumSalePrice"
+            type="number"
+            min="0"
+            required
+          />
+        </section>
+        <section>
+            <label for="auction-ends-in-days">Auction ends in</label>
+            <select id="auction-ends-in-days" name="auctionEndsInDays">
+                <option value="1">1 day</option>
+                <option value="3">3 days</option>
+                <option value="5">5 days</option>
+                <option value="7">7 days</option>
+            </select>
+          </section>
+          <section>
+            <label for="get-it-now-price">Get It Now price $</label>
+            <input
+              id="get-it-now-price"
+              name="getItNowPrice"
+              type="number"
+              min="0"
+            />
+          </section>
+          <section>
+            <label for="is-return-accepted">Returns Accepted?</label>
+            <input
+              id="is-return-accepted"
+              name="isReturnAccepted"
+              type="checkbox"
+            />
+          </section>
+          <div style="display: flex; gap: 1rem;">
+            <a href="/menu" style="width: 100%; text-decoration: none;">
+                <button type="button" class="secondary">Cancel</button>
+            </a>
+            <button type="submit">List My Item</button>
+          </div>
+      </form>
+    </main>
+
+    <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>

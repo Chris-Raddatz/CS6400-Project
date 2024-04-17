@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Auction Results</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style>
+      th, td {
+        text-align:left;
+        padding: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include('./includes/header.ejs'); -%>
+    <main>
+      <head>
+        <span style="font-size: 26px">Auction Results</span>
+      </head>
+      <br>
+    </br>
+      <table style="width: 100%;">
+        <tr style="text-decoration: underline;">
+          <th>ID</th>
+          <th>Item Name</th>
+          <th>Sale Price</th>
+          <th>Winner</th>
+          <th>Auction Ended</th>
+        </tr>
+        <% for(let i =0;i <= data.length -1; i++){ %>
+        <tr>
+          <td> <%= data[i].id %> </td>
+          <td><a href="/item/view?itemID=<%= data[i].id %>"> <%= data[i].itemname %></a> </td>
+          <% if (data[i].amount == null) { %>
+            <td> - </td>
+          <% } else { %>
+            <td> $<%= data[i].amount %> </td>
+          <% } %>
+          <% if (data[i].userid == null) { %>
+            <td> - </td>
+          <% } else { %>
+            <td> <%= data[i].userid %> </td>
+          <% } %>
+          <td> <%= new Date(data[i].endtime).toLocaleString("en-US") %> </td>
+        </tr>
+        <% } %>
+      </table>
+      </section>
+
+    </main>
+    <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>

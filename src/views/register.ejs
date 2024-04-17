@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BuzzBid Registration</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body class="prompt">
+    <main>
+      <section>
+        <h3>BuzzBid</h3>
+        <h1>Register</h1>
+
+        <%- include('./includes/messages.ejs'); -%>
+
+        <form action="/register" method="post">
+          <section>
+            <label for="first-name">First Name</label>
+            <input
+              id="first-name"
+              name="firstName"
+              type="text"
+              autocomplete="given-name"
+              required
+              autofocus
+            />
+          </section>
+          <section>
+            <label for="last-name">Last Name</label>
+            <input
+              id="last-name"
+              name="lastName"
+              type="text"
+              autocomplete="family-name"
+              required
+            />
+          </section>
+          <section>
+            <label for="username">Username</label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              autocomplete="username"
+              required
+            />
+          </section>
+          <section>
+            <label for="password">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              required
+            />
+          </section>
+          <section>
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              autocomplete="new-password"
+              required
+            />
+          </section>
+          <button type="submit">Register</button>
+        </form>
+        <hr />
+        <p class="help">Already have an account? <a href="/login">Login</a></p>
+      </section>
+    </main>
+
+    <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>

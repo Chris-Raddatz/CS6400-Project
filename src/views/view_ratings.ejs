@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BuzzBid Registration</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style>
+      .rating-card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        border: 1px solid #d9d9d9;
+        border-radius: 3px;
+      }
+
+      .rating-card-heading{
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body class="prompt">
+    <%- include('./includes/header.ejs'); -%>
+    <main>
+      <section>
+        <p>
+          Item ID: <%= ratingData.mainitem.id %>
+        </p>
+      </section>
+      <section>
+        <p>
+          Item Name: <%= ratingData.mainitem.itemname %>
+        </p>
+      </section>
+      <section>
+        <p>
+          Average Rating: <%= ratingData.mainitem.averagerating %>
+        </p>
+      </section>
+
+      <% ratingData.forEach(function(rating, index) {%>
+      <section class="rating-card">
+        <div class="rating-card-heading">
+          <div>
+            <% if (rating.canDelete) { %>
+            <form action="/rating" method="post">
+              <input type="hidden" name="action" value="delete" />
+              <input type="hidden" name="itemID" value="<%= rating.id %>" />
+              <button type="submit" class="link">Delete</button>
+            </form>
+            <% } %>
+            <div>Rated by: <%= rating.commentorusername %></div>
+            <div>Date: <%= new Date(rating.ratingtime).toLocaleString("en-US") %></div>
+          </div>
+          <div>
+            <%= rating.ratingvalue %> Stars
+          </div>
+        </div>
+        <div>
+          <p><%= rating.comment %></p>
+        </div>
+      </section>
+      <% }) %>
+
+      <% if (ratingData.canAdd) { %>
+      <form action="/rating" method="post">
+        <section>
+          <label for="rating-value" style="display: inline;">My Rating</label>
+          <select name="ratingValue" id="rating-value">
+            <option value="0">0 stars</option>
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <option value="4">4 stars</option>
+            <option value="5">5 stars</option>
+          </select>
+        </section>
+
+        <section>
+          <label for="rating-comments">Comments</label>
+          <textarea name="ratingComment" id="rating-comments" cols="30" rows="10"></textarea>
+        </section>
+
+        <input type="hidden" name="itemID" value="<%= ratingData.mainitem.id %>" />
+        <input type="hidden" name="action" value="add" />
+        <button type="submit">Rate This Item</button>
+      </form>
+      <% } %>
+
+      <a href="/item/view?itemID=<%= ratingData.mainitem.id %>" style="width: 100%; text-decoration: none;">
+        <button type="button" class="secondary" style="margin-top: 1rem;">Close</button>
+      </a>
+    </main>
+    <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>

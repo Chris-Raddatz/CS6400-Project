@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Top Rated Items</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style>
+      th, td {
+        text-align:left;
+        padding: 10px;
+      }
+  
+    </style>
+  </head>
+
+  <body>
+    <%- include('./includes/header.ejs'); -%>
+    <main>
+      <head>
+        <span style="font-size: 26px">Top Rated Items</span>
+      </head>
+      <br>
+    </br>
+      <table style="width: 100%;">
+        <tr style="text-decoration: underline;">
+          <th class = "text-center">Item Name</th>
+          <th class = "text-center">Average Rating</th>
+          <th class = "text-center">Rating Count</th>
+        </tr>
+        <% for(let i =0;i <= data.length -1; i++){ %>
+        <tr>
+          <td> <%= data[i].itemname %> </td>
+          <td> <%= data[i].avgrating %> </td>
+          <td> <%= data[i].ratingcount %> </td>
+        </tr>
+        <% } %>
+      </table>
+      </section>
+      </main>
+      <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>

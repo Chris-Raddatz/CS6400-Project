@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BuzzBid Menu</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style>
+      .welcome-message {
+        text-align: center;
+      }
+
+      .menu-options {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .menu-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .menu-list li{
+        list-style-type: none;
+        margin-bottom: 0.25rem;
+      }
+    </style>
+  </head>
+  <body>
+
+    <%- include('./includes/header.ejs'); -%>
+    
+    <main>
+      <%- include('./includes/messages.ejs'); -%>
+      
+      <section class="welcome-message">
+        <p>Welcome, <%= firstname %> <%= lastname %>!</p>
+        <% if (isAdmin) { %>
+          <p>Administrative Position: <%= position %></p>
+        <% } %>
+      </section>
+      <section class="menu-options">
+        <ul class="menu-list">
+          <h2>Auction Options</h2>
+          <li><a href="/item/search">Search for Items</a></li>
+          <li><a href="/item/list-item">List Item</a></li>
+          <li><a href="/auction/results">View Auction Results</a></li>
+        </ul>
+        <% if (isAdmin) { %>
+        <ul class="menu-list">
+          <h2>Reports</h2>
+          <li><a href="/admin/categories">Category Report</a></li>
+          <li><a href="/admin/users">User Report</a></li>
+          <li><a href="/admin/top-items">Top Rated Items</a></li>
+          <li><a href="/admin/auction-stats">Auction Statistics</a></li>
+          <li><a href="/admin/cancelled-auctions">Cancelled Auction Details</a></li>
+        </ul>
+        <% } %>
+      </section>
+    </main>
+
+    <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>

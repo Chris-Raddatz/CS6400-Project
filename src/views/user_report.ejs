@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User Report</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style>
+      th, td {
+        text-align:left;
+        padding: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include('./includes/header.ejs'); -%>
+    <main>
+      <head>
+        <span style="font-size: 26px">User Report</span>
+      </head>
+      <br>
+    </br>
+      <table style="width: 100%;"> 
+        <tr style="text-decoration: underline;">
+          <th class = "text-center">Username</th>
+          <th class = "text-center">Listed</th>
+          <th class = "text-center">Sold</th>
+          <th class = "text-center">Won</th>
+          <th class = "text-center">Rated</th>
+          <th class = "text-center">Most Frequent Condition</th>
+        </tr>
+        <% for(let i = 0; i < data.length; i++) { %>
+          <tr>
+            <td> <%= data[i].username %> </td>
+            <% if (data[i].total_listed == null) { %>
+              <td> N/A </td>
+            <% } else { %>
+              <td> <%= data[i].total_listed %> </td>
+            <% } %>
+            <% if (data[i].total_sold == null) { %>
+              <td> N/A </td>
+            <% } else { %>
+              <td> <%= data[i].total_sold %> </td>
+            <% } %>
+            <% if (data[i].total_won == null) { %>
+              <td> N/A </td>
+            <% } else { %>
+              <td> <%= data[i].total_won %> </td>
+            <% } %>
+            <% if (data[i].total_rated == null) { %>
+              <td> N/A </td>
+            <% } else { %>
+              <td> <%= data[i].total_rated %> </td>
+            <% } %>
+            <% if (data[i].most_listed_condition == null) { %>
+              <td> N/A </td>
+            <% } else { %>
+              <td> <%= data[i].most_listed_condition %> </td>
+            <% } %>
+          </tr>
+        <% } %>
+      </table>
+      </section>
+      </main>
+      <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Search For Items</title>
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+
+  <body class = "prompt">
+    <%- include('./includes/header.ejs'); -%>
+    <main>
+      <head>
+        <span style="font-size: 26px">Search For Items</span>
+      </head>
+      <%- include('./includes/messages.ejs'); -%>
+    <br>
+    </br>
+    <form action="/item/search/result" method="get">
+        <section>
+          <label for="keyword">Keyword</label>
+          <input
+            id="keyword"
+            name="keyword"
+            type="text"
+            autocomplete="keyword"
+            autofocus
+          />
+        </section>
+        <section>
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+              <option value="" selected></option>
+            <% for(let i =0;i <= data.length -1; i++){ %> 
+                <option> <%= data[i].categoryname %></option>   
+                    <% } %> 
+            </select>
+        </section>
+        <section>
+                <label for="minimum_price">Minimum Price $</label>
+                <input
+                  id="minimum_price"
+                  name="minimum_price"
+                  type="text"
+                  autocomplete="minimum_price"
+                />
+          </section>
+          <section>
+                <label for="maximum_price">Maximum Price $</label>
+                <input
+                  id="maximum_price"
+                  name="maximum_price"
+                  type="text"
+                  autocomplete="maximum_price"
+                />
+          </section>
+          <section>
+                <label for="condition">Condition at Least:</label>
+                <select name="condition" id="condition">
+                    <option value="" selected></option>
+                <% for(let i =0;i <= data2.length -1; i++){ %> 
+                    <option value="<%= data2[i].condition.label %>"> <%= data2[i].condition.label %></option>   
+                        <% } %> 
+                </select>
+          </section>
+          <button type="submit">Search</button>
+        </form>
+      </section>
+      </main>
+      <%- include('./includes/footer.ejs'); -%>
+  </body>
+</html>

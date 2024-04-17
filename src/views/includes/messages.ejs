@@ -1,0 +1,7 @@
+<% if (hasMessages) { %>
+    <section class="messages">
+        <% messages.forEach(function(message) { %>
+            <p><%= message %></p>
+        <% }); %>
+    </section>
+<% } %>

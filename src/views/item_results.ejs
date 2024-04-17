@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Item Results</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <style>
+      th, td {
+        text-align:left;
+        padding: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include('./includes/header.ejs'); -%>
+    <main>
+      <head>
+        <span style="font-size: 26px">Item Results</span>
+      </head>
+      <br>
+    </br>
+      <table style="width: 100%;">
+        <tr>
+          <th>ID</th>
+          <th>Item Name</th>
+          <th>Current Bid</th>
+          <th>High Bidder</th>
+          <th>Get It Now Price</th>
+          <th>Auction Ends</th>
+        </tr>
+        <% for(let i =0;i <= data.length -1; i++){ %>
+        <tr>
+          <td> <%= data[i].id %> </td>
+          <td><a href="/item/view?itemID=<%= data[i].id %>"> <%= data[i].itemname %></a> </td>
+          <td> $<%= data[i].highestbidamount %> </td>
+          <td> <%= data[i].highestbiduser %> </td>
+          <td> $<%= data[i].getnowprice %> </td>
+          <td> <%= new Date(data[i].endtime).toLocaleString("en-US") %> </td>
+        </tr>
+        <% } %>
+      </table>
+      </section>
+
+      <a href="/item/search" style="width: 100%; text-decoration: none;">
+        <button type="button" class="secondary">Back to Search</button>
+    </a>
+      </main>
+  </body>
+</html>
