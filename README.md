@@ -91,7 +91,7 @@ This implementation structure would cover all tasks:
 
 - `routes/`
 
-  - `user.js starting at "/"` (Matthew has all of the user routes)
+  - `user.js starting at "/"`
 
     - GET /login
     - POST /login (Login task)
@@ -101,38 +101,38 @@ This implementation structure would cover all tasks:
 
   - `item.js starting at "/item"`
 
-    - GET /list-item (List Item task load) `e.g, "/item/list-item"` (low-medium) (Thair) Done
-    - POST /list-item (List Item task) (medium) (Thair) Done
+    - GET /list-item (List Item task load) `e.g, "/item/list-item"`
+    - POST /list-item (List Item task)
 
-    - GET /search (easy) (Chris) **Done**
-    - GET /search/result?keyword=test&category=etc.. (Query for Items task) (medium) (Chris) **Done** (For errors it just reloads the search page)
+    - GET /search (easy)
+    - GET /search/result?keyword=test&category=etc.. (Query for Items task)
 
-    - GET /view?itemID=test (View Item task) (hard) (Matthew)
-    - GET /result?itemID=test (View Item Results task) (way hard) (Matthew)
+    - GET /view?itemID=test (View Item task)
+    - GET /result?itemID=test (View Item Results task)
 
-    - POST /description (Edit Item Description task) (easy) (Thair) Done
+    - POST /description (Edit Item Description task)
 
   - `admin.js starting at "/report"`
 
-    - GET /categories (View Category Report) (Chris) **Done**
-    - GET /users (View Users Report) (Chris) **Done** Could put in code to not show users that have N/A for everything
-    - GET /top-items (Top Rated Items Report) (Chris) **Done**
-    - GET /auction-stats (Auction Statistics Report) (Chris) **Done**
-    - GET /cancelled-auctions (Cancelled Auction Details report) (Chris) **Done**
+    - GET /categories (View Category Report)
+    - GET /users (View Users Report)
+    - GET /top-items (Top Rated Items Report)
+    - GET /auction-stats (Auction Statistics Report)
+    - GET /cancelled-auctions (Cancelled Auction Details report)
 
   - `bid.js starting at "/bid"`
 
-    - POST /place (Place Bid task) (high-medium) (Race) Unsure how to pass on item id and user to post call
+    - POST /place (Place Bid task)
 
   - `auction.js starting at "/auction"`
 
-    - POST /cancel (Cancel Item task) (easy) (Matthew)
-    - GET /results (View Auction Results task) (medium) (Kevin)
+    - POST /cancel (Cancel Item task)
+    - GET /results (View Auction Results task)
 
   - `rating.js starting at "/rating"`
-    - GET /?itemID=test (View Rating Task) (medium) (Kevin)
-    - POST / (Add Rating task) (low-medium) (Kevin)
-    - POST / (Delete Rating task) (low-medium) (Kevin)
+    - GET /?itemID=test (View Rating Task)
+    - POST / (Add Rating task)
+    - POST / (Delete Rating task)
 
 Routes might be the trickiest thing for you guys to figure out, so I took the time to be very verbose in my code and comments. At the time of writing this, login, logout, register, and view menu are fully functional. I did this so no one else had to worry about configuring security, error handling, project structuring, etc. boring coding stuff not particularly relevant to this class.
 
